@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="ZHDMI Departments — Exploring the spiritual and administrative wings of Zion Healing & Deliverance Ministries International.">
+<title>Departments — ZHDMI Liberia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root{
+  --gold:#B8860B;--gold-lt:#D4A017;--gold-bright:#F0C040;--gold-pale:#FDF5DC;--gold-glow:rgba(0,0,0,.05);
+  --crimson:#7B1818;--crim2:#5C1010;--crim3:#3E0A0A;--crim-lt:#C0392B;
+  --ivory:#FDFAF2;--cream:#F5EDD5;--parchment:#EDE0C0;
+  --surface:#FFF;--surface2:#FAF6EC;--surface3:#F2E8D0;
+  --text:#140F05;--text2:#3A2C10;--muted:#7A6435;--subtle:#A8905A;
+  --border:rgba(184,134,11,.15);--border2:rgba(184,134,11,.30);--border3:rgba(184,134,11,.50);
+  --sh-xs:0 2px 4px rgba(0,0,0,.05);--sh-sm:0 4px 8px rgba(0,0,0,.08);
+  --sh:0 8px 16px rgba(0,0,0,.1);--sh-md:0 12px 24px rgba(0,0,0,.12);
+  --sh-lg:0 16px 40px rgba(0,0,0,.15);--sh-xl:0 24px 60px rgba(0,0,0,.2);
+  --nav-bg:rgba(253,250,242,.97);--nav-h:52px;
+  --tr:.3s;--ease:cubic-bezier(.4,0,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+/* ═══════════════ RESET & BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--text);line-height:1.8;font-size:18px;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+section{padding:5rem 0;}
+
+/* ═══ UI COMPONENTS ═══ */
+.page-hero{background:linear-gradient(145deg,var(--crimson),var(--crim2),var(--crim3));padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden;color:#fff;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;margin-bottom:.7rem;line-height:1.1;}
+.page-hero p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:700px;margin:0 auto;}
+
+.s-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:800;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.s-tag::before{content:'';width:24px;height:2px;background:var(--gold);border-radius:2px;}
+
+/* Department Grid */
+.dept-section-title{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:2.5rem;color:var(--crimson);border-left:5px solid var(--gold);padding-left:1.5rem;}
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:5rem;}
+.dept-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all 0.3s;}
+.dept-card:hover{border-color:var(--gold);box-shadow:var(--sh-md);transform:translateY(-5px);}
+.dept-icon{font-size:2.2rem;margin-bottom:1.2rem;display:block;color:var(--gold);}
+.dept-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--text);margin-bottom:0.8rem;}
+.dept-card p{font-size:0.92rem;color:var(--muted);line-height:1.7;}
+
+nav{position:sticky;top:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);height:var(--nav-h);}
+.nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;}
+.nav-menu{display:flex;list-style:none;gap:0.5rem;align-items:center;}
+.nav-link{padding:0.5rem 0.9rem;font-size:0.76rem;font-weight:600;letter-spacing:0.03em;color:var(--text2);border-radius:8px;}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:var(--gold-pale);}
+.nav-link.active{font-weight:700;}
+
+footer{background:var(--surface);padding:4rem 1.5rem;border-top:1px solid var(--border);margin-top:5rem;}
+.footer-main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;}
+.footer-col h5{font-size:.65rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{font-size:.85rem;color:var(--muted);}
+.footer-col ul a:hover{color:var(--gold);}
+
+@media(max-width:768px){.footer-main{grid-template-columns:1fr;}.nav-menu{display:none;}}
+</style>
+<script src="data.js"></script>
+<script src="main.js"></script>
+</head>
+<body class="departments-page">
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;color:var(--crimson);">ZHDMI</a>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="about.html">About</a></li>
+      <li><a class="nav-link" href="leadership.html">Leadership</a></li>
+      <li><a class="nav-link active" href="departments.html">Departments</a></li>
+      <li><a class="nav-link" href="programs.html">Programs</a></li>
+      <li><a class="nav-link" href="events.html">News</a></li>
+      <li><a class="nav-link" href="gallery.html">Gallery</a></li>
+      <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner container">
+    <div style="font-size:.75rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.2rem;">Structure & Organization</div>
+    <h1>Our Departments</h1>
+    <p>Organized for spiritual excellence and impactful community service in Liberia.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    
+    <!-- Spiritual Wings -->
+    <h2 class="dept-section-title" data-sr>Spiritual Wings <span style="font-weight:400; font-size:1.1rem; color:var(--muted); display:block; margin-top:0.3rem;">Overseeing the spiritual growth of our congregation</span></h2>
+    <div class="dept-grid">
+      <div class="dept-card" data-sr data-d="1">
+        <span class="dept-icon">🕊️</span>
+        <h3>Worship & Arts</h3>
+        <p>Oversees the musical ministry, liturgy, and creative arts that lead our congregation into the presence of God during services and crusades.</p>
+      </div>
+      <div class="dept-card" data-sr data-d="2">
+        <span class="dept-icon">🙏</span>
+        <h3>Prayer & Deliverance</h3>
+        <p>The intercessory engine of ZHDMI. This department manages our monthly vigils, the prayer wall, and spiritual counseling for those seeking breakthrough.</p>
+      </div>
+      <div class="dept-card" data-sr data-d="3">
+        <span class="dept-icon">📖</span>
+        <h3>Evangelism & Discipleship</h3>
+        <p>Coordinates national outreach, church planting efforts, and our biblical training programs to equip new believers for a life of faith.</p>
+      </div>
+    </div>
+
+    <!-- Administrative Wings -->
+    <h2 class="dept-section-title" data-sr>Administrative Wings <span style="font-weight:400; font-size:1.1rem; color:var(--muted); display:block; margin-top:0.3rem;">Operational excellence and humanitarian impact</span></h2>
+    <div class="dept-grid">
+      <div class="dept-card" data-sr data-d="1">
+        <span class="dept-icon">⚖️</span>
+        <h3>Finance & Stewardship</h3>
+        <p>Manages the ministry's resources with 100% transparency. Responsible for budgeting, donor reporting, and maintaining NGO compliance.</p>
+      </div>
+      <div class="dept-card" data-sr data-d="2">
+        <span class="dept-icon">🏥</span>
+        <h3>Program Management</h3>
+        <p>The operational arm for our humanitarian work, overseeing the execution of education scholarships, health drives, and youth empowerment initiatives.</p>
+      </div>
+      <div class="dept-card" data-sr data-d="3">
+        <span class="dept-icon">💻</span>
+        <h3>Media & Communications</h3>
+        <p>Ensures the Gospel reaches everyone through multimedia, website management, social media outreach, and public relations.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <h3 style="font-family:'Playfair Display',serif;margin-bottom:1.2rem;color:var(--gold);">ZHDMI Liberia</h3>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:250px;">Restoring hope and transforming lives through the power of Jesus Christ. Registered NGO in Liberia.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Trust</h5>
+      <ul>
+        <li><a href="vision-mission.html">Vision & Mission</a></li>
+        <li><a href="reports.html">Annual Reports</a></li>
+        <li><a href="strategic-plan.html">Strategic Plan</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ministry</h5>
+      <ul>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="give.html">Donate Now</a></li>
+        <li><a href="about.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--border);margin-top:3rem;padding-top:2rem;text-align:center;font-size:0.75rem;color:var(--subtle);">
+    &copy; 2025 Zion Healing & Deliverance Ministries International.
+  </div>
+</footer>
+
+<script>
+// Ensure scroll reveal triggers for the newly created cards
+if(typeof sr !== 'undefined') {
+  document.querySelectorAll('[data-sr]').forEach(el => sr.observe(el));
+}
+</script>
+</body>
+</html>

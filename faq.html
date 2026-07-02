@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Frequently Asked Questions about ZHDMI — Mission, programs, and transparency in Liberia.">
+<title>FAQ — ZHDMI Liberia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root{
+  --gold:#B8860B;--gold-lt:#D4A017;--gold-bright:#F0C040;--gold-pale:#FDF5DC;--gold-glow:rgba(0,0,0,.05);
+  --crimson:#7B1818;--crim2:#5C1010;--crim3:#3E0A0A;--crim-lt:#C0392B;
+  --ivory:#FDFAF2;--cream:#F5EDD5;--parchment:#EDE0C0;
+  --surface:#FFF;--surface2:#FAF6EC;--surface3:#F2E8D0;
+  --text:#140F05;--text2:#3A2C10;--muted:#7A6435;--subtle:#A8905A;
+  --border:rgba(184,134,11,.15);--border2:rgba(184,134,11,.30);--border3:rgba(184,134,11,.50);
+  --sh-xs:0 2px 4px rgba(0,0,0,.05);--sh-sm:0 4px 8px rgba(0,0,0,.08);
+  --sh:0 8px 16px rgba(0,0,0,.1);--sh-md:0 12px 24px rgba(0,0,0,.12);
+  --sh-lg:0 16px 40px rgba(0,0,0,.15);--sh-xl:0 24px 60px rgba(0,0,0,.2);
+  --nav-bg:rgba(253,250,242,.97);--nav-h:52px;
+  --tr:.3s;--ease:cubic-bezier(.4,0,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+/* ═══════════════ RESET & BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--text);line-height:1.8;font-size:18px;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+section{padding:5rem 0;}
+
+/* ═══ UI COMPONENTS ═══ */
+.page-hero{background:linear-gradient(145deg,var(--crimson),var(--crim2),var(--crim3));padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden;color:#fff;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;margin-bottom:.7rem;line-height:1.1;}
+.page-hero p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:700px;margin:0 auto;}
+
+.s-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:800;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.s-tag::before{content:'';width:24px;height:2px;background:var(--gold);border-radius:2px;}
+
+/* FAQ Styles */
+.faq-group{margin-bottom:4rem;}
+.faq-cat-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--crimson);margin-bottom:1.5rem;border-bottom:2px solid var(--gold-pale);padding-bottom:0.5rem;}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem;overflow:hidden;transition:all 0.3s;}
+.faq-item:hover{border-color:var(--gold);box-shadow:var(--sh-sm);}
+.faq-question{padding:1.5rem 2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--text2);font-size:1.05rem;}
+.faq-question::after{content:'+';font-family:'Inter',sans-serif;font-size:1.4rem;color:var(--gold);transition:transform 0.3s;}
+.faq-item.open .faq-question::after{transform:rotate(45deg);}
+.faq-answer{padding:0 2rem;max-height:0;overflow:hidden;transition:all 0.3s var(--ease);color:var(--muted);font-size:0.95rem;}
+.faq-item.open .faq-answer{padding-bottom:1.5rem;max-height:300px;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:1rem 2.5rem;font-weight:700;border-radius:10px;font-size:0.9rem;transition:all .3s;border:none;cursor:pointer;}
+.btn-gold{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#fff;box-shadow:0 4px 16px var(--gold-glow);}
+
+nav{position:sticky;top:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);height:var(--nav-h);}
+.nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;}
+.nav-menu{display:flex;list-style:none;gap:0.5rem;align-items:center;}
+.nav-link{padding:0.5rem 0.9rem;font-size:0.76rem;font-weight:600;letter-spacing:0.03em;color:var(--text2);border-radius:8px;}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:var(--gold-pale);}
+
+footer{background:var(--surface);padding:4rem 1.5rem;border-top:1px solid var(--border);margin-top:5rem;}
+.footer-main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;}
+.footer-col h5{font-size:.65rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{font-size:.85rem;color:var(--muted);}
+.footer-col ul a:hover{color:var(--gold);}
+
+@media(max-width:768px){.footer-main{grid-template-columns:1fr;}.nav-menu{display:none;}}
+</style>
+<script src="data.js"></script>
+<script src="main.js"></script>
+</head>
+<body class="faq-page">
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;color:var(--crimson);">ZHDMI</a>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="about.html">About</a></li>
+      <li><a class="nav-link" href="leadership.html">Leadership</a></li>
+      <li><a class="nav-link" href="departments.html">Departments</a></li>
+      <li><a class="nav-link" href="programs.html">Programs</a></li>
+      <li><a class="nav-link" href="events.html">News</a></li>
+      <li><a class="nav-link" href="gallery.html">Gallery</a></li>
+      <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner container">
+    <div style="font-size:.75rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.2rem;">Support Center</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about our mission, ministry, and community impact in Liberia.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    
+    <!-- Category: General -->
+    <div class="faq-group">
+      <h2 class="faq-cat-title">General Information</h2>
+      <div class="faq-item">
+        <div class="faq-question">What is ZHDMI?</div>
+        <div class="faq-answer">ZHDMI stands for Zion Healing and Deliverance Ministries International. We are a Christian-based, non-profit NGO registered in the Republic of Liberia. Our dual focus is on spiritual restoration and practical community development.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Where are you located?</div>
+        <div class="faq-answer">Our principal office is located in the Johnsonville Community, Montserrado County, Liberia. We also operate outreach centers and prayer hubs across the region.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are you a church or an NGO?</div>
+        <div class="faq-answer">We are both. While we operate prayer centers and hold weekly Sunday worship services, we are formally registered as an NGO to carry out humanitarian work in education, health awareness, and poverty reduction.</div>
+      </div>
+    </div>
+
+    <!-- Category: Programs -->
+    <div class="faq-group">
+      <h2 class="faq-cat-title">Our Programs</h2>
+      <div class="faq-item">
+        <div class="faq-question">What kind of humanitarian work do you do?</div>
+        <div class="faq-answer">We run six core programs including Education Support (scholarships), Health Awareness (community drives), Youth & Women Empowerment, and Discipleship. Our goal is to meet the physical and spiritual needs of Liberian families.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Who is eligible for your education scholarships?</div>
+        <div class="faq-answer">We prioritize underserved children and youth within the Montserrado County area who demonstrate academic potential but lack the financial means to cover school fees and supplies.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How can I join a prayer vigil?</div>
+        <div class="faq-answer">Our All-Night Prayer and Deliverance Vigils are held monthly at our Johnsonville center. All are welcome! Check our News & Events page for the next scheduled date.</div>
+      </div>
+    </div>
+
+    <!-- Category: Giving & Transparency -->
+    <div class="faq-group">
+      <h2 class="faq-cat-title">Giving & Transparency</h2>
+      <div class="faq-item">
+        <div class="faq-question">Is ZHDMI a registered non-profit?</div>
+        <div class="faq-answer">Yes, we are a fully registered non-profit NGO in the Republic of Liberia. We operate under strict governance and accountability standards set by our Board of Directors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How are my donations used?</div>
+        <div class="faq-answer">100% of public donations go directly toward our mission programs. We maintain radical transparency and publish Annual Reports detailing our fund allocation and community outcomes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I volunteer even if I am not in Liberia?</div>
+        <div class="faq-answer">Absolutely. We offer virtual volunteer roles in administration, media, and prayer coordination. For those in Liberia, we have many hands-on roles in our community programs.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:4rem;" data-sr>
+      <p style="margin-bottom:1.5rem;color:var(--muted);">Still have questions?</p>
+      <a href="about.html#contact" class="btn btn-gold">Contact Our Team</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <h3 style="font-family:'Playfair Display',serif;margin-bottom:1.2rem;color:var(--gold);">ZHDMI Liberia</h3>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:250px;">Restoring hope and transforming lives through the power of Jesus Christ. Registered NGO in Liberia.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Trust</h5>
+      <ul>
+        <li><a href="vision-mission.html">Vision & Mission</a></li>
+        <li><a href="reports.html">Annual Reports</a></li>
+        <li><a href="strategic-plan.html">Strategic Plan</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ministry</h5>
+      <ul>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="give.html">Donate Now</a></li>
+        <li><a href="about.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--border);margin-top:3rem;padding-top:2rem;text-align:center;font-size:0.75rem;color:var(--subtle);">
+    &copy; 2025 Zion Healing & Deliverance Ministries International.
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

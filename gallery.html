@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Gallery of ZHDMI — Visualizing our mission, services, and community impact in Liberia.">
+<title>Gallery — ZHDMI Liberia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root{
+  --gold:#B8860B;--gold-lt:#D4A017;--gold-bright:#F0C040;--gold-pale:#FDF5DC;--gold-glow:rgba(184,134,11,.28);
+  --crimson:#7B1818;--crim2:#5C1010;--crim3:#3E0A0A;--crim-lt:#C0392B;
+  --ivory:#FDFAF2;--cream:#F5EDD5;--parchment:#EDE0C0;
+  --surface:#FFF;--surface2:#FAF6EC;--surface3:#F2E8D0;
+  --text:#140F05;--text2:#3A2C10;--muted:#7A6435;--subtle:#A8905A;
+  --border:rgba(184,134,11,.15);--border2:rgba(184,134,11,.30);--border3:rgba(184,134,11,.50);
+  --sh-xs:0 2px 4px rgba(0,0,0,.05);--sh-sm:0 4px 8px rgba(0,0,0,.08);
+  --sh:0 8px 16px rgba(0,0,0,.1);--sh-md:0 12px 24px rgba(0,0,0,.12);
+  --sh-lg:0 16px 40px rgba(0,0,0,.15);--sh-xl:0 24px 60px rgba(0,0,0,.2);
+  --nav-bg:rgba(253,250,242,.97);--nav-h:52px;
+  --tr:.3s;--ease:cubic-bezier(.4,0,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+/* ═══════════════ RESET & BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--text);line-height:1.8;font-size:18px;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+section{padding:5rem 0;}
+
+/* ═══ UI COMPONENTS ═══ */
+.page-hero{background:linear-gradient(145deg,var(--crimson),var(--crim2),var(--crim3));padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden;color:#fff;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;margin-bottom:.7rem;line-height:1.1;}
+.page-hero p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:700px;margin:0 auto;}
+
+.filter-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:var(--nav-h);z-index:900;}
+.filter-inner{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;}
+.filter-btn{padding:0.5rem 1.2rem;border-radius:100px;border:1.5px solid var(--border2);background:transparent;color:var(--muted);font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.filter-btn.on, .filter-btn:hover{background:var(--gold);color:#fff;border-color:var(--gold);}
+
+/* Gallery Grid */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:1.5rem;margin-top:2rem;}
+.gallery-item{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--surface2);box-shadow:var(--sh-xs);cursor:pointer;transition:transform 0.3s var(--ease);}
+.gallery-item:hover{transform:scale(1.02);box-shadow:var(--sh-md);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease);}
+.gallery-item:hover img{transform:scale(1.1);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;opacity:0;transition:opacity 0.3s;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-overlay h3{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.2rem;}
+.gallery-overlay span{color:var(--gold-bright);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;}
+/* Download Button & Lightbox */
+.gallery-dl-btn{position:absolute;top:1rem;right:1rem;z-index:10;width:38px;height:38px;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(-10px);transition:all 0.3s var(--ease);}
+.gallery-item:hover .gallery-dl-btn{opacity:1;transform:none;}
+.gallery-dl-btn:hover{background:var(--gold);border-color:var(--gold);}
+.lightbox{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity 0.4s;backdrop-filter:blur(10px);}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox-content{max-width:95%;max-height:85vh;position:relative;transform:scale(0.95);transition:transform 0.4s var(--spring);text-align:center;}
+.lightbox.open .lightbox-content{transform:scale(1);}
+.lightbox-img{max-width:100%;max-height:80vh;border-radius:12px;box-shadow:0 32px 80px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);}
+.lightbox-close{position:absolute;top:-3.5rem;right:0;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;opacity:0.6;transition:opacity 0.2s;}
+.lightbox-close:hover{opacity:1;}
+.lightbox-info{margin-top:1.5rem;color:#fff;}
+.lightbox-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.2rem;}
+.lightbox-info p{font-size:0.75rem;text-transform:uppercase;color:var(--gold-bright);letter-spacing:0.15em;font-weight:700;}
+
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--text);color:#fff;padding:0.8rem 1.5rem;border-radius:10px;font-size:0.85rem;font-weight:600;z-index:9999;transition:transform 0.4s var(--ease);white-space:nowrap;box-shadow:var(--sh-lg);}
+.toast.on{transform:translateX(-50%) translateY(0);}
+
+nav{position:sticky;top:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);height:var(--nav-h);}
+.nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;}
+.nav-menu{display:flex;list-style:none;gap:0.5rem;align-items:center;}
+.nav-link{padding:0.5rem 0.9rem;font-size:0.76rem;font-weight:600;letter-spacing:0.03em;color:var(--text2);border-radius:8px;}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:var(--gold-pale);}
+.nav-link.active{font-weight:700;}
+
+footer{background:var(--surface);padding:4rem 1.5rem;border-top:1px solid var(--border);margin-top:5rem;}
+.footer-main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;}
+@media(max-width:768px){.footer-main{grid-template-columns:1fr;}.nav-menu{display:none;}}
+
+[data-sr]{opacity:0;transform:translateY(20px);transition:all 0.6s ease-out;}
+[data-sr].vis{opacity:1;transform:none;}
+</style>
+<script src="data.js"></script>
+<script src="main.js"></script>
+</head>
+<body class="gallery-page">
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;color:var(--crimson);">ZHDMI</a>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="about.html">About</a></li>
+      <li><a class="nav-link" href="leadership.html">Leadership</a></li>
+      <li><a class="nav-link" href="departments.html">Departments</a></li>
+      <li><a class="nav-link" href="programs.html">Programs</a></li>
+      <li><a class="nav-link" href="events.html">News</a></li>
+      <li><a class="nav-link active" href="gallery.html">Gallery</a></li>
+      <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner container">
+    <div style="font-size:.75rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.2rem;">Visual Journey</div>
+    <h1>Our Gallery</h1>
+    <p>Capturing moments of spiritual restoration and community impact across Liberia.</p>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <div class="container filter-inner">
+    <button class="filter-btn on" onclick="filterGallery('all', this)">All Photos</button>
+    <button class="filter-btn" onclick="filterGallery('worship', this)">Worship</button>
+    <button class="filter-btn" onclick="filterGallery('outreach', this)">Outreach</button>
+    <button class="filter-btn" onclick="filterGallery('education', this)">Education</button>
+    <button class="filter-btn" onclick="filterGallery('youth', this)">Youth</button>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Content rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox UI -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    <div class="lightbox-info">
+      <p id="lightboxCat"></p>
+      <h3 id="lightboxTitle"></h3>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toastEl" role="alert" aria-live="polite"></div>
+
+<footer>
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <h3 style="font-family:'Playfair Display',serif;margin-bottom:1.2rem;color:var(--gold);">ZHDMI Liberia</h3>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:250px;">Restoring hope and transforming lives through the power of Jesus Christ. Registered NGO in Liberia.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Trust</h5>
+      <ul>
+        <li><a href="vision-mission.html">Vision & Mission</a></li>
+        <li><a href="reports.html">Annual Reports</a></li>
+        <li><a href="strategic-plan.html">Strategic Plan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Ministry</h5>
+      <ul>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="give.html">Donate Now</a></li>
+        <li><a href="about.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderGallery(cat);
+}
+
+function renderGallery(filter = 'all') {
+  const grid = document.getElementById('galleryGrid');
+  const data = typeof GALLERY_DATA !== 'undefined' ? GALLERY_DATA : [];
+  const filtered = filter === 'all' ? data : data.filter(i => i.cat === filter);
+  
+  grid.innerHTML = filtered.map(i => `
+    <div class="gallery-item" data-sr onclick="openLightbox('${i.img}', '${i.title}', '${i.cat}')">
+      <img src="${i.img}" alt="${i.title}" loading="lazy">
+      <button class="gallery-dl-btn" title="Download Image" onclick="event.stopPropagation(); downloadImg('${i.img}', '${i.title}')"><i class="fas fa-download"></i></button>
+      <div class="gallery-overlay">
+        <span>${i.cat}</span>
+        <h3>${i.title}</h3>
+      </div>
+    </div>
+  `).join('');
+
+  // Setup scroll reveal
+  const sr = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('vis');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-sr]').forEach(el => sr.observe(el));
+}
+
+window.addEventListener('load', () => renderGallery());
+
+function openLightbox(img, title, cat) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = img;
+  document.getElementById('lightboxTitle').textContent = title;
+  document.getElementById('lightboxCat').textContent = cat;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function downloadImg(url, title) {
+  if(typeof toast === 'function') toast('Opening high-quality image... 🙏');
+  // Opens image in new tab to bypass origin restrictions and allow easy "Save As" or mobile save
+  window.open(url, '_blank');
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
