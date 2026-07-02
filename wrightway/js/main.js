@@ -33,6 +33,8 @@
       document.body.style.overflow = open ? 'hidden' : '';
     });
     veil.addEventListener('click', closeDrawer);
+    var drawerClose = document.getElementById('drawerClose');
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
     drawer.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', closeDrawer);
     });
