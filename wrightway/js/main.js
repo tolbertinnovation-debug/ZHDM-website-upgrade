@@ -201,6 +201,27 @@
     });
   });
 
+  /* ── Click-to-play YouTube facades ── */
+  document.querySelectorAll('.video-embed[data-video]').forEach(function (box) {
+    function play() {
+      if (box.querySelector('iframe')) return;
+      var id = box.getAttribute('data-video');
+      var title = box.getAttribute('data-vtitle') || 'Video';
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube.com/embed/' + id +
+        '?autoplay=1&playsinline=1&rel=0';
+      frame.title = title;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.setAttribute('allowfullscreen', '');
+      box.innerHTML = '';
+      box.appendChild(frame);
+    }
+    box.addEventListener('click', play);
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+    });
+  });
+
   /* ── Donation amount chips + impact calculator ── */
   var chips = document.querySelectorAll('.amount-chip');
   var impactLine = document.getElementById('impactLine');
