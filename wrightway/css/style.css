@@ -60,6 +60,11 @@ nav.site-nav.scrolled{background:rgba(10,10,10,.97);box-shadow:0 6px 30px rgba(0
   box-shadow:0 4px 18px var(--purple-glow);border:1px solid rgba(168,85,247,.35);
   font-size:1.25rem;color:var(--gold);transition:all .3s var(--spring);}
 .nav-logo:hover .logo-emblem{transform:scale(1.08) rotate(-3deg);box-shadow:0 6px 26px var(--purple-glow);}
+.logo-img{height:48px;width:auto;max-width:190px;object-fit:contain;flex-shrink:0;
+  border-radius:10px;filter:drop-shadow(0 4px 14px rgba(124,58,237,.35));
+  transition:transform .3s var(--spring);}
+.nav-logo:hover .logo-img{transform:scale(1.06);}
+footer .logo-img{height:56px;}
 .logo-name{font-family:var(--font-display);font-size:1.02rem;font-weight:700;color:#fff;line-height:1.15;}
 .logo-name .w-r{color:var(--gold);}
 .logo-sub{font-size:.56rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gray);}
